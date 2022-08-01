@@ -34,8 +34,8 @@ export default {
       this.marked += 1;
     },
     unmarkedBooks(id) {
-      const idx = this.books.findIndex((book) => book.id === id);
-      this.books[idx].isMark = false;
+      const book = this.books.find((book) => book.id === id);
+      book.isMark = false;
       this.marked -= 1;
     },
   },

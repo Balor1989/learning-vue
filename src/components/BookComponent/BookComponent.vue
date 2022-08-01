@@ -2,15 +2,27 @@
   <li class="list-item">
     <h3 class="book-title">{{ title }}</h3>
     <p v-if="isAuthorOpen">{{ author }}</p>
-    <button class="btn" @click="showAuthor">
-      {{ isAuthorOpen ? "Hide author" : "show author" }}
-    </button>
-    <button class="btn danger" v-if="isMark" @click="unmark">Unmark</button>
-    <button v-if="!isMark" class="btn primary" @click="mark">Mark</button>
+    <ButtonComponent
+      :text="isAuthorOpen ? 'Hide author' : 'show author'"
+      @action="showAuthor"
+    />
+    <ButtonComponent
+      v-if="isMark"
+      text="Unmark"
+      color="danger"
+      @action="unmark"
+    />
+    <ButtonComponent
+      v-if="!isMark"
+      color="primary"
+      text="Mark"
+      @action="mark"
+    />
   </li>
 </template>
 
 <script>
+import ButtonComponent from "../ButtonComponent";
 export default {
   //   props: ["title", "author", "id", "isOpen"],
   props: {
@@ -77,6 +89,9 @@ export default {
       this.checkAuthor();
       this.$emit("unmarkedBooks", this.id);
     },
+  },
+  components: {
+    ButtonComponent,
   },
 };
 </script>
