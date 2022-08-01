@@ -1,6 +1,7 @@
 <template>
   <div class="container pt-1">
-    <HeaderComponent />
+    <HeaderComponent :open-rate="openRate" />
+
     <ul class="card">
       <BookComponent
         v-for="{ id, title, author } in books"
@@ -9,6 +10,8 @@
         v-bind:title="title"
         :author="author"
         :is-open="isOpen"
+        v-on:add-point="openRate += 1"
+        v-on:remove-point="openRate -= 1"
       />
     </ul>
   </div>
@@ -23,6 +26,7 @@ export default {
   },
   data() {
     return {
+      openRate: 0,
       books: [
         {
           id: 1,
