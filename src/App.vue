@@ -1,13 +1,16 @@
 <template>
   <div class="container pt-1">
     <HeaderComponent />
-    <BookComponent
-      v-for="{ id, title, author } in books"
-      :key="id"
-      v-bind:title="title"
-      :author="author"
-      :isOpen="iOpen"
-    />
+    <ul class="card">
+      <BookComponent
+        v-for="{ id, title, author } in books"
+        :key="id"
+        :id="id"
+        v-bind:title="title"
+        :author="author"
+        :is-open="isOpen"
+      />
+    </ul>
   </div>
 </template>
 
@@ -35,7 +38,7 @@ export default {
         },
         {
           id: 3,
-          title: "YOU DON`T KNOW JS 6 VOLUME SET",
+          title: "YOU DON`T KNOW JAVASCRIPT 6 VOLUME SET ",
           author: "Kyle Simpson",
         },
       ],

@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Inter, Roboto, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
+  font-family: Inter, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
@@ -13,16 +11,6 @@ body {
   background: #2c3e50;
 }
 
-hr {
-  margin: 1rem 0;
-}
-
-strong,
-.bold {
-  font-weight: 500;
-}
-
-ol,
 p,
 ul {
   line-height: 1.7;
@@ -181,12 +169,6 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .list-item {
