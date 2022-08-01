@@ -2,7 +2,7 @@
   <div class="card">
     <div class="title-container">
       <h2 class="header-title">{{ title }}</h2>
-      <p class="rate">Open:{{ openRate }}</p>
+      <p class="rate">Open:{{ openRate }} | Marked: {{ marked }}</p>
     </div>
     <div class="description">
       <p>
@@ -17,6 +17,7 @@
 export default {
   props: {
     openRate: Number,
+    marked: Number,
   },
   data() {
     return {
