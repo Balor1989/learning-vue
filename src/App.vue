@@ -14,6 +14,7 @@
         v-on:add-point="openRate += 1"
         @remove-point="openRate -= 1"
         @marked-books="markedBooks"
+        @unmarked-books="unmarkedBooks"
       />
     </ul>
   </div>
@@ -31,6 +32,11 @@ export default {
       const idx = this.books.findIndex((book) => book.id === id);
       this.books[idx].isMark = true;
       this.marked += 1;
+    },
+    unmarkedBooks(id) {
+      const idx = this.books.findIndex((book) => book.id === id);
+      this.books[idx].isMark = false;
+      this.marked -= 1;
     },
   },
   data() {

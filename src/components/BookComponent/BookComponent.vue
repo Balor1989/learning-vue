@@ -5,6 +5,7 @@
     <button class="btn" @click="showAuthor">
       {{ isAuthorOpen ? "Hide author" : "show author" }}
     </button>
+    <button class="btn danger" v-if="isMark" @click="unmark">Unmark</button>
     <button v-if="!isMark" class="btn primary" @click="mark">Mark</button>
   </li>
 </template>
@@ -39,6 +40,13 @@ export default {
       console.log("No id for emit");
       return false;
     },
+    unmarkedBooks(id) {
+      if (id) {
+        return true;
+      }
+      console.log("No id for emit");
+      return false;
+    },
   },
   data() {
     return {
@@ -46,6 +54,12 @@ export default {
     };
   },
   methods: {
+    checkAuthor() {
+      if (this.isAuthorOpen) {
+        this.$emit("removePoint");
+      }
+      this.isAuthorOpen = false;
+    },
     showAuthor() {
       this.isAuthorOpen = !this.isAuthorOpen;
       if (this.isAuthorOpen) {
@@ -56,12 +70,12 @@ export default {
       }
     },
     mark() {
-      if (this.isAuthorOpen) {
-        this.$emit("removePoint");
-      }
-      this.isAuthorOpen = false;
-
+      this.checkAuthor();
       this.$emit("markedBooks", this.id);
+    },
+    unmark() {
+      this.checkAuthor();
+      this.$emit("unmarkedBooks", this.id);
     },
   },
 };
