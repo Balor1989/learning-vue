@@ -5,6 +5,6 @@ import HeaderComponent from "./components/HeaderComponent";
 
 const app = createApp(App);
 
-app.component("header-component", HeaderComponent);
+app.component("HeaderComponent", HeaderComponent);
 
 app.mount("#app");
