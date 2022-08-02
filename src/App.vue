@@ -15,7 +15,11 @@
       <button class="btn">Button</button>
     </template>
   </AppBlock>
-  <AppList></AppList>
+  <AppList>
+    <template #default="{ i }">
+      <span style="color: #c25205">{{ i }}</span>
+    </template>
+  </AppList>
 </template>
 
 <script>
