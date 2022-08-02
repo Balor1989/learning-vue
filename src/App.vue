@@ -11,7 +11,6 @@
         :author="author"
         :is-open="isOpen"
         :is-mark="isMark"
-        :books="books"
         v-on:add-point="openRate += 1"
         @remove-point="openRate -= 1"
         @marked-books="markedBooks"
@@ -39,6 +38,11 @@ export default {
       book.isMark = false;
       this.marked -= 1;
     },
+  },
+  provide() {
+    return {
+      books: this.books,
+    };
   },
   data() {
     return {

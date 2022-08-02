@@ -26,7 +26,7 @@
       />
     </div>
     <div v-if="isShowBooks" class="pt-1">
-      <BookListComponent :books="books" />
+      <BookListComponent />
     </div>
   </li>
 </template>
@@ -53,7 +53,6 @@ export default {
     isOpen: Boolean,
 
     isMark: Boolean,
-    books: Array,
   },
 
   emits: {
