@@ -1,30 +1,42 @@
 <template>
-  <li class="list-item">
-    <h3 class="book-title">{{ title }}</h3>
-    <p v-if="isAuthorOpen">{{ author }}</p>
-    <ButtonComponent
-      :text="isAuthorOpen ? 'Hide author' : 'show author'"
-      @action="showAuthor"
-    />
-    <ButtonComponent
-      v-if="isMark"
-      text="Unmark"
-      color="danger"
-      @action="unmark"
-    />
-    <ButtonComponent
-      v-if="!isMark"
-      color="primary"
-      text="Mark"
-      @action="mark"
-    />
+  <li class="list-item column">
+    <div>
+      <h3 class="book-title">{{ title }}</h3>
+      <p v-if="isAuthorOpen">{{ author }}</p>
+      <ButtonComponent
+        :text="isAuthorOpen ? 'Hide author' : 'show author'"
+        @action="showAuthor"
+      />
+      <ButtonComponent
+        v-if="isMark"
+        text="Unmark"
+        color="danger"
+        @action="unmark"
+      />
+      <ButtonComponent
+        v-if="!isMark"
+        color="primary"
+        text="Mark"
+        @action="mark"
+      />
+      <ButtonComponent
+        :text="isShowBooks ? 'hide other books' : 'show other books'"
+        @action="showBooks"
+        :color="isShowBooks ? 'danger' : ''"
+      />
+    </div>
+    <div v-if="isShowBooks" class="pt-1">
+      <BookListComponent :books="books" />
+    </div>
   </li>
 </template>
 
 <script>
 import ButtonComponent from "../ButtonComponent";
+import BookListComponent from "../BookListComponent";
 export default {
   //   props: ["title", "author", "id", "isOpen"],
+
   props: {
     title: {
       type: String,
@@ -41,7 +53,9 @@ export default {
     isOpen: Boolean,
 
     isMark: Boolean,
+    books: Array,
   },
+
   emits: {
     addPoint: null,
     removePoint: null,
@@ -63,6 +77,7 @@ export default {
   data() {
     return {
       isAuthorOpen: this.isOpen,
+      isShowBooks: false,
     };
   },
   methods: {
@@ -71,6 +86,9 @@ export default {
         this.$emit("removePoint");
       }
       this.isAuthorOpen = false;
+    },
+    showBooks() {
+      this.isShowBooks = !this.isShowBooks;
     },
     showAuthor() {
       this.isAuthorOpen = !this.isAuthorOpen;
@@ -92,11 +110,15 @@ export default {
   },
   components: {
     ButtonComponent,
+    BookListComponent,
   },
 };
 </script>
 <style>
 .book-title {
   max-width: 500px;
+}
+.column {
+  flex-direction: column;
 }
 </style>
